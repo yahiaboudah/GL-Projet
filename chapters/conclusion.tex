@@ -1,0 +1,51 @@
+
+
+TODO
+\section{Étape Post-UML}
+    TODO
+\section{Itérations du mini projet}
+    \subsection{Itération Nº1}
+
+        \textbf{\textit{Entités Générales}}
+        \vspace{8px}
+        \linebreak
+        Université; Personne; Tourniquet; Porte; CodeQR;
+        Enseignat, Etudiant, Staff (sous-entités de Personne);Alerte; TypeAlerte; AgentSupportTechnique, AgentSécurité (sous-entités de AgentTourniquet); Passage (Entrée ou Sortie); SalleSurveillance; Imprimante; ScannerQRCode; OrdinateurSalleSurveillance
+        \linebreak
+
+        \textbf{\textit{Scénario Principal}}
+        \vspace{8px}
+
+        \begin{itemize}
+            \item Une personne entre à l'université par une porte équipée de tourniquets. Il présente sa carte ou son QR CODE via une application universitaire.
+            \item Le tourniquet vérifie la validité du code. Si valide, l'entrée est autorisée ; sinon, une alerte est déclenchée.
+            \item L'agent technique informe l'agent sécurité du nombre de tourniquet concerné.
+            \item L'agent de sécurité amène une personne dans la salle de surveillance
+            \item Si l'alerte est: CodeInconnu, donc l'agent de sécurité retire la personne de l'entrée.
+            \item Si l'alerte est: CodeAncien, l'agent technique vérifie si c'est la meme personne, si c'est le cas il lui imprime le code le plus récent. Sinon la personne est retirée.
+            \item Si l'alerte est de type: CodeRépété. Si c'est pas la meme personne dans le système, la personne est retirée, puis l'agent technique met à jour le code de Personne propriétaire de code, et le notifie que son code a été utilisé par quelqu'un d'autre. Si c'est la meme personne, donce son code est mis à jour, et imprimé pour son entrée.
+            \item Si le visiteur oublie sa carte ou n'a pas l'application, il se rend à la salle de surveillance.
+            \item L'agent technique vérifie l'identité du visiteur dans la base de données. S'il est membre de l'université, un QR CODE temporaire est imprimé pour lui permettre l'accès moyennant une amende.
+            \item En sortant, le visiteur glisse sa carte dans le tourniquet de sortie.
+            \item Pour éviter les entrées multiples avec le même code QR, un suivi des entrées/sorties est effectué.
+            \item Si un code déjà utilisé est scanné, l'entrée est refusée et une alerte de fraude est générée.
+            \item En cas de fraude avérée, le fraudeur est expulsé et le détenteur légitime est notifié pour désactiver son ancien code QR.
+        \end{itemize}
+
+        \textbf{\textit{Limitations et Cas Particuliers}}
+        \vspace{8px}
+
+        \begin{itemize}
+            \item Pendant les événements spéciaux, les portes sont ouvertes sans nécessité de code QR.
+            \item La police, les pompiers ou les entités spéciales ont des accès différenciés.
+            \item La principale faille est la possibilité d'utiliser le même code par plusieurs personnes.
+            \item Pour améliorer la sécurité, l'authentification biométrique pourrait être envisagée.
+        \end{itemize}
+
+    \subsection{Itération Nº2}
+        TODO
+    \subsection{Itération Nº3}
+        TODO
+
+\section{Outils utilisés}
+    TODO

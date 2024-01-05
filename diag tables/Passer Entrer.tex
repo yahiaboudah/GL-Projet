@@ -1,0 +1,32 @@
+
+\begin{tabular}{ |c|p{12cm}| }
+    \hline
+    Numéro & 1 \\
+    \hline
+    Nom & Passer Entrer \\
+    \hline
+    Acteurs & Personne \\ 
+    \hline
+    Objectif & L'entrée autorisée à l'université \\ 
+    \hline
+    Pré-condition & Avoir un code QR valide \\
+    \hline
+    Date de création & 04/01/2024 \\
+    \hline
+    Auteur & Yahia Boudah \\
+    \hline
+    Scénario Nominal & \begin{enumerate}
+        \item La personne approche une porte et un tourniquet spécifiques
+        \item La personne présente un code QR au scanner du tourniquet
+        \item Tourniquet est activé lors de la validation du code, donc la personne passe par le tourniquet (TQ est désactivé aprés l'entrée)
+    \end{enumerate} \\
+    \hline
+    Scénarios alternatifs & \begin{description}
+        \item[2.1.] La personne présente un code non valide (non-enregistré ou déjà utilisé)
+        \item[2.1.2] TQ reste désactivé et bloque l'entrée
+        \item[2.1.3] La personne a l'option de demander l'assistance à l'agent (Dem Ent AvecCode) 
+    \end{description} \\
+    \hline
+    Post-condition & Soit la personne entre ou pas. \\
+    \hline
+\end{tabular}

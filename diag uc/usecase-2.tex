@@ -1,0 +1,91 @@
+
+
+\FloatBarrier
+\begin{figure}[H]
+%\centering
+\begin{tikzpicture}
+    
+    \begin{scope}[local bounding box=boundingbox]
+
+        % Software system
+        \begin{umlsystem}[x=-4.7]{Système Logiciel}
+            
+            %10 Assister
+            \umlusecase{Assister}
+            %11 Identifier
+            \umlusecase[x=5]{Identifier}
+            %12 Avec ID
+            \umlusecase[x=8]{AvecID}
+            %13 Avec Code
+            \umlusecase[x=8, y=-1]{AvecCode}
+
+            %14 Update Code
+            \umlusecase[x=0.3, y=-2.5, width=1.1cm]{Update Code}
+            %15 Imprimer Code
+            \umlusecase[x=5, y=-2.5, width=1.3cm]{Imprimer Code}
+
+            %16 Voir Profile
+            \umlusecase[y=-5, width=1.3cm]{Voir Profile}
+
+            %17 Gestion Tourniquets
+            \umlusecase[x=8, y=-7, width=2.5cm]{Gestion Tourniquets}
+            %18 Alumer
+            \umlusecase[x=8, y=-9.5]{Changer État}
+
+            %19 Gestion AgentP
+            \umlusecase[x=3, y=-7, width=1.5cm]{Gestion AgentP}
+            %20 Modifier AP
+            \umlusecase[x=3, y=-9.5]{Modifier}
+
+            % LINKS
+            \umlinclude{usecase-10}{usecase-11}
+            \umlinherit{usecase-12}{usecase-11}
+            \umlinherit{usecase-13}{usecase-11}
+
+            \umlinclude[name=incl]{usecase-14}{usecase-15}
+            \umlextend{usecase-14}{usecase-11}
+            \umlextend{usecase-15}{usecase-11}
+
+            \umlextend{usecase-18}{usecase-17}
+            %\umlextend{usecase-19}{usecase-17}
+            \umlextend{usecase-20}{usecase-19}
+
+        \end{umlsystem}
+
+        % Printer system
+        \begin{umlsystem}[x=0, y=-13]{Système Imprimante}
+            %22 Impression
+            \umlusecase[fill=yellow!30]{Impression}
+        \end{umlsystem}
+    
+    \end{scope}
+
+    % NOTES
+    \umlnote[x=1, y=-4.7]{incl-1}{Seulement si le cas est utilisé par AgentP}
+
+    % ACTORS
+    \umlactor[x=-9, y=-1, scale=2]{Personne}
+    \umlactor[x=-9, y=-5, scale=2]{AgentP}
+
+    \umlactor[x=8.3, y=-5, scale=2]{AdminP}
+    \umlactor[x=8.3, y=-11, scale=1.5]{<<Sys>> Logiciel}
+    
+    % ASSOCIATIONS
+    \umlassoc{Personne}{usecase-14}
+    \umlassoc{Personne}{usecase-16}
+
+    \umlassoc{AgentP}{usecase-10}
+    \umlassoc{AgentP}{usecase-16}
+    \umlassoc{AdminP}{usecase-17}
+    \umlassoc{AdminP}{usecase-19}
+
+    \umlassoc{<<Sys>> Logiciel}{usecase-21}
+
+    % BOUDNING BOX
+    \draw ([shift={(-0.5,-0.5)}] boundingbox.south west) rectangle ([shift={(0.5,0.5)}] boundingbox.north east);
+    \node[above] at (boundingbox.north) {Système Contrôle d'Accès: Partie 2};
+
+\end{tikzpicture}
+\caption{Système Contrôle d'Accès: Partie 2}
+\label{fig:syspart2}
+\end{figure}

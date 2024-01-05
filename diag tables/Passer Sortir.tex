@@ -1,0 +1,34 @@
+
+\begin{tabular}{ |c|p{12cm}| }
+    \hline
+    Numéro & 2 \\
+    \hline
+    Nom & Passer Sortir \\
+    \hline
+    Acteurs & Personne \\ 
+    \hline
+    Objectif & La sortie autorisée de l'université \\ 
+    \hline
+    Pré-condition & Avoir un code QR valide \\
+    \hline
+    Date de création & 04/01/2024 \\
+    \hline
+    Auteur & Yahia Boudah \\
+    \hline
+    Scénario Nominal & \begin{enumerate}
+        \item La personne approche une porte et un tourniquet spécifiques
+        \item La personne présente un code QR au scanner du tourniquet d'exit
+        \item Tourniquet est activé lors de la validation du code, donc la personne passe par le tourniquet et sorte (TQ est désactivé aprés la sortie)
+    \end{enumerate} \\
+    \hline
+    Scénarios alternatifs & \begin{description}
+        \item[3.1.] La personne présente un code non valide
+        donc le TQ reste désactivé et bloque la sortie.
+        \item[3.1.1.] La personne a l'option de demander l'assistance à l'agent (Dem Sortie)
+        \item[3.2.] La personne ne possède pas de code.
+        \item[3.2.1.]  La personne a l'option de demander l'assistance à l'agent (Dem Sortie)
+    \end{description} \\
+    \hline
+    Post-condition & Soit la personne sort ou pas. \\
+    \hline
+\end{tabular}

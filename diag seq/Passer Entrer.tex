@@ -1,0 +1,25 @@
+
+\begin{umlseqdiag}
+    \umlactor[class=Personne]{personne}
+    \umlobject[class=Tourniquet]{TQ} 
+    \umlactor[class=AgentP]{agentP} 
+    
+    \begin{umlcall}[op=scanner(code)]{personne}{TQ}
+    \end{umlcall}
+        \begin{umlfragment}[type=alt, label=Code Valide, name=alt,inner xsep=6] 
+            \begin{umlcallself}[op=Activer] {TQ} 
+            \end{umlcallself}
+            \begin{umlcall}[op=Passer] {personne}{TQ} 
+            \end{umlcall}
+            \begin{umlcall}[op=Désactiver] {TQ}{TQ} 
+            \end{umlcall}
+            \vspace{8px}
+            \umlfpart[CodeNonValide] 
+                \begin{umlfragment}
+                    \begin{umlcall}[op=ASK HELP, return=0]{personne}{agentP} 
+                    \end{umlcall}
+                    \begin{umlcall}[op=ASK HELP, return=0]{personne}{agentP} 
+                    \end{umlcall}
+                \end{umlfragment}
+        \end{umlfragment}    
+\end{umlseqdiag} 

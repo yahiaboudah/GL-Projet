@@ -1,0 +1,58 @@
+
+
+\section{Modèle de cas d'utilisation}
+    \subsection{Diagrammes de cas d'utilisation}
+    Notre système global complet est composé de quatre sous-systèmes:
+    \begin{description}
+        
+        \item[Système Tourniquet] implique les tourniquets placés aux portes de l'université
+        \item[Système AgentP] implique l'agent de porte qu assiste les gens à entrer ou sortir 
+        \item[Système Logiciel] L'interface utilisée par l'agentP, les membres et l'adminP
+        \item[Système Imprimante] Pour imprimer des codes QR en cas d'urgence
+
+
+    \end{description}
+    \vspace{8px}
+    
+    Ceux-ci peuvent être classés en deux catégories principales :\linebreak 
+    \begin{enumerate}
+        \item \textbf{Partie Passage} qui implique le système de Tourniquet et le système AgentP, utilisés seulement par l'acteur Personne. Présentée dans la figure \ref{fig:syspart1}
+        \linebreak
+        \item \textbf{Partie Logiciel et Imprimante} qui implique les deux systèmes Logiciel et Imprimante, utilisés par tous les acteurs. Présentée dans la figure \ref{fig:syspart2}
+    \end{enumerate}
+    \vspace{8px}
+
+    \input{diag uc/usecase-1.tex}
+    \input{diag uc/usecase-2.tex}
+
+    \begin{description}
+        \item[Liste des cas d'utilisations à étudier] \hfill \\
+        \item[] \begin{minipage}[t]{0.5\textwidth}
+            \begin{enumerate}
+                \item Passer Entrer
+                \item Passer Sortir
+                \item Dem Ent SansCode
+                \item Dem Ent AvecCode
+                \item Dem Sortie
+                \item Payer Amende
+                \item Assiter
+            \end{enumerate}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.4\textwidth}
+            \begin{enumerate}
+                \setcounter{enumi}{7}
+                \item Identifier AvecID
+                \item Identifier AvecCode
+                \item Update Code
+                \item Imprimer Code
+                %\item Voir Profile
+                \item Gestion tourniquet
+                %\item Changer État TQ
+                \item Gestion AgentP
+                %\item Modifier AP
+                \item Impression
+            \end{enumerate}
+        \end{minipage}
+    \end{description}
+    \pagebreak

@@ -1,0 +1,186 @@
+\documentclass[12pt, a4paper]{report}
+%\usepackage{ragged2e}
+\usepackage[T1]{fontenc}
+\usepackage{pgf}
+% \usepackage[condensed,math]{kurier}
+% \usepackage[T1]{fontenc}
+\usepackage{svg}
+\usepackage{tikz}
+\usepackage{stanli}
+\usepackage{afterpage}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{pgfpages}
+\usepackage{svg}
+\usepackage{rotating}
+
+\usepackage{scalefnt}
+\usepackage{placeins}
+\usepackage{enumitem}
+\usepackage{float}
+
+% COMMANDS
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt, fill=white] (char) {#1};}}
+
+\pgfpagesdeclarelayout{boxed}
+{
+	\edef\pgfpageoptionborder{0pt}
+}
+{
+	\pgfpagesphysicalpageoptions
+	{%
+		logical pages=1,%
+	}
+	\pgfpageslogicalpageoptions{1}
+	{
+		border code=\pgfsetlinewidth{2pt}\pgfstroke,%
+		border shrink=\pgfpageoptionborder,%
+		resized width=.9\pgfphysicalwidth,%
+		resized height=.9\pgfphysicalheight,%
+		center=\pgfpoint{.5\pgfphysicalwidth}{.5\pgfphysicalheight}%
+	}%
+}
+
+\pgfpagesuselayout{boxed}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[french]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=1.5cm,left=1.5cm,right=1.5cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage{titletoc}
+\usepackage{titlesec}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{tikz-uml}
+
+\titlespacing*{\section}{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
+
+% COMMAND FOR DETAILED USECASE LIST
+\newcommand{\DetailedUsecases}[1]{%
+    \foreach \title in {#1}{%
+        \subsection{Cas <\title>}
+			\vspace{12px}
+			\begin{center}
+				\FloatBarrier
+				\begin{figure}[H]
+				\begin{center}
+					\input{diag tables/\title}
+				\end{center}
+				\caption{Fiche descriptive de Cas <\title>}
+				\label{fig:fiche \title}
+				\end{figure}
+				\vspace{20px}
+				\FloatBarrier
+				\begin{figure}[H]
+				\begin{center}
+				\begin{tikzpicture} 
+					\input{diag seq/\title}
+				\end{tikzpicture}
+				\end{center}
+				\caption{Diagramme de séquence système de Cas <\title>}
+				\label{fig:seq \title}
+				\end{figure}
+			\end{center}
+    }%
+}
+
+% COMMAND FOR DETAILED SEQUENCE SYSTEM DIAGRAMS
+\newcommand{\DetailedSeqDiag}[1]{%
+    \foreach \title in {#1}{%
+        \subsection{Diagramme de Cas <\title>}
+			\vspace{12px}
+			\begin{center}
+				\FloatBarrier
+				\begin{figure}[H]
+				\begin{center}
+				\begin{tikzpicture} 
+					\input{diag det seq/\title}
+				\end{tikzpicture} 
+				\end{center}
+				\caption{Diagramme de séquence système detaillé de cas <\title>}
+				\label{fig:seqdet \title}
+				\end{figure}
+			\end{center}
+    }%
+}
+
+\begin{document}
+	
+	\input{titlepage}
+	\newpage
+	\begin{center}
+		\vspace*{\fill}
+		\vspace*{\fill}
+		\includegraphics[width=500px]{images/bismillah.png}
+		\vspace*{\fill}
+		\vspace*{\fill}
+	\end{center}
+	\newpage
+	\begin{center}
+		% \centering
+		\vspace*{\fill}
+		\vspace*{\fill}
+		{\Huge\bfseries Contrôle d'Accès Physique par Tourniquets Tripodes avec Codes QR\par}
+		\vspace*{\fill}
+		\vspace*{\fill}
+	\end{center}
+	
+	
+	% \titlecontents{section}[0pt]{\large\bfseries}{\thecontentslabel\hspace{1em}}{}{\titlerule*[8pt]{.}\contentspage}
+
+	\tableofcontents
+
+	%\justifying
+	\scalefont{1.2}
+	
+	\chapter{Introduction}
+	\input{chapters/introduction}
+	\pagebreak
+	
+	\chapter{Expression des Besoins}
+	\input{chapters/expression des besoins/1-spec.tex}
+	\input{chapters/expression des besoins/2-diag.tex}
+	\input{chapters/expression des besoins/3-etud.tex}
+	\pagebreak
+
+	\chapter{Analyse et Conception}
+	\input{chapters/analyse et conception/1-diag class}
+	\input{chapters/analyse et conception/2-diag seq det}
+	\input{chapters/analyse et conception/3-diag db}
+	\pagebreak
+
+	\chapter{Conclusion}
+	\input{chapters/conclusion}
+	\pagebreak
+
+	\begin{thebibliography}{999}
+        
+        \bibitem{iutenligne}
+        IUTENLIGNE \\
+        \url{https://prive.iutenligne.net/iuRxM0CThIXDIjzG/informatique/langages/kettaf/UML/01introduction/index.html}
+
+        \bibitem{cmu}
+        CMU \\
+        \url{https://www.andrew.cmu.edu/course/90-754/umlucdfaq.html#ucdefinition}
+    
+    \end{thebibliography}
+
+	\newpage
+	\begin{center}
+		\vspace*{\fill}
+		\vspace*{\fill}
+		\includegraphics[width=500px]{images/hamdulillah.png}
+		\vspace*{\fill}
+		\vspace*{\fill}
+	\end{center}
+	
+\end{document}

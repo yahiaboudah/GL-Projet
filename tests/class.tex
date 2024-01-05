@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{tikz-uml}
+
+\tikzset{
+    aggregation/.style={>=diamond, shorten <=15pt, shorten >=15pt, line width=0.8pt},
+    aggfill/.style={aggregation, postaction={draw, ->}},
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{umlseqdiag}
+        \umlobject[class=A, stereo=control]{a}
+        \umlobject[x=2, y=-3, class=C, stereo=entity]{c}
+    \end{umlseqdiag}
+
+    \draw[aggfill] (a.center) -- (c.north west);
+\end{tikzpicture}
+
+\end{document}

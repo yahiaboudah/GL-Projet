@@ -1,0 +1,46 @@
+
+
+
+\begin{tabular}{ |c|p{12cm}| }
+    \hline
+    Numéro & 7 \\
+    \hline
+    Nom & Assister \\
+    \hline
+    Acteurs & AgentP \\ 
+    \hline
+    Objectif & L'AgentP assiste un membre à entrer. \\ 
+    \hline
+    Pré-condition & Une information sur la personne, soit sous la forme d'une carte d'identité ou un code QR \\
+    \hline
+    Date de création & 04/01/2024 \\
+    \hline
+    Auteur & Yahia Boudah \\
+    \hline
+    Scénario Nominal & \begin{enumerate}
+        \item \textbf{Cas <Identifier AvecID>} si l'info=carte,ou \textbf{Cas <Identifier AvecCode>} si l'info=code.(affiche un profil)
+        \item L'AgentP vérifie que l'image de profil est en fait celle de la Personne
+        \item L'AgentP fait son travail
+    \end{enumerate} \\
+    \hline
+    Scénarios alternatifs & \begin{description}
+        \item[2.1.] Si l'image n'est pas celle de la Personne, l'AgentP donce retire la Personne.
+        
+        \item[3.1.] Si le StatutEntrée de Personne dans le profil est DEDANS donc l'AgentP fait un (Update Code) et puis automatiquement imprime le nouveau code. (Le cas où quelqu'un d'autre a déjà utilisé illégalement ce code pour entrer)
+        \item[3.1.1] L'AgentP donne le code imprimé à la Personne.
+        
+        \item[3.2.] Si le StatutEntrée est DEHORS, l'information présentée est un code QR et le systéme affiche que le code scanné est ANCIEN, donc l'AgentP imprime le code le plus récent. (Le cas où la personne essaie d'entrer avec un code ancien)
+        \item[3.2.1.] L'AgentP donne le code à la Personne. 
+        
+        \item[3.3.] Si le StatutEntrée est DEHORS, l'information présentée est une carte d'identité, donce l'AgentP demande une amende à la Personne
+        \item[3.3.1.] Cas (Payer Amende) par la Personne
+        \item[3.3.1.1.] Si le montant n'est pas suffisant, l'AgentP retire la Personne
+        \item[3.3.1.2.] Si le montant est suffisant, l'AgentP imprime le code de Personne en utilisant sa propre mini-imprimante
+        \item[3.3.1.2.1] L'AgentP donne le code à la Personne  
+
+        \item[3.4.] Si le StatutEntrée est DEHORS, l'information présentée est un code QR et le systéme affiche que le code scanné est RECENT, donce l'AgentP dit à la personne de réessayer.
+    \end{description} \\
+    \hline
+    Post-condition & / \\
+    \hline
+\end{tabular}

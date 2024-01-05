@@ -1,0 +1,32 @@
+
+
+\begin{tabular}{ |c|p{12cm}| }
+    \hline
+    Numéro & 9 \\
+    \hline
+    Nom & Identifier AvecCode \\
+    \hline
+    Acteurs & AgentP \\ 
+    \hline
+    Objectif & L'AgentP identifie le membre propriétaire du code. \\ 
+    \hline
+    Pré-condition & Un code QR \\
+    \hline
+    Date de création & 04/01/2024 \\
+    \hline
+    Auteur & Yahia Boudah \\
+    \hline
+    Scénario Nominal & \begin{enumerate}
+        \item L'AgentP choisit l'option "Scanner" dans le logiciel.
+        \item L'AgentP prend une photo du Code.
+        \item Le Systéme Logiciel traite le code.
+        \item Le Systéme Logiciel redonne le profil correspondant avec le status du code (ANCIEN, RECENT).
+    \end{enumerate} \\
+    \hline
+    Scénarios alternatifs & \begin{description}
+        \item[4.1.] Si le code n'est pas valide (aucun profil correspondant), le Systéme Logiciel affiche une erreur.
+    \end{description} \\
+    \hline
+    Post-condition & L'AgentP soit fait une identification par code ou pas. \\
+    \hline
+\end{tabular}

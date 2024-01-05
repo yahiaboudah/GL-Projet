@@ -1,0 +1,80 @@
+
+\FloatBarrier
+\begin{figure}[H]
+%\centering
+\begin{tikzpicture}
+
+    \begin{scope}[local bounding box=boundingbox]
+    
+        % Turnstile system
+        \begin{umlsystem}[x=-4]{Système Tourniquet}
+            
+            
+            %1 Passer
+            \umlusecase[fill=red!30]{ 
+                Passer
+            }
+
+            %2 Entrer
+            \umlusecase[x=4, y=1, fill=red!30]{Entrer}
+            %3 Sortir
+            \umlusecase[x=4, y=-1, fill=red!30]{Sortir}
+
+            \umlinherit{usecase-2}{usecase-1}
+            \umlinherit{usecase-3}{usecase-1}
+        \end{umlsystem}
+
+
+        % AgentP system
+        \begin{umlsystem}[x=-4, y=-5]{Système AgentP}
+            
+            %4 Demander
+            \umlusecase[fill=orange!30]{Demander}
+
+            % Demander Entrée
+            %5 Demander Entrée
+            \umlusecase[x=3, fill=orange!30]{Entrée}
+            %6 Dem Entrée Sans Code
+            \umlusecase[x=6.5, y=0, fill=orange!30]{Sans Code} 
+            %7 Dem Entrée Avec Code
+            \umlusecase[x=6.5, y=-1.5, fill=orange!30]{Avec Code}
+            
+            % Demander Sortie
+            %8 Demander Sortie
+            \umlusecase[x=3, y=-1.5, fill=orange!30]{Sortie}
+            
+            % Payer l'amende
+            %9 Payer l'amende
+            \umlusecase[x=6.5, y=-3, fill=orange!30]{Payer l'amende}
+
+            \umlinherit{usecase-5}{usecase-4}
+            \umlinherit{usecase-8}{usecase-4}
+            \umlinherit{usecase-6}{usecase-5}
+            \umlinherit{usecase-7}{usecase-5}
+            % include Pay Fine
+            \umlinclude{usecase-8}{usecase-9}
+            \draw [->, dashed] (usecase-6) .. controls +(3,-0.5) and +(2.5,0.5) .. (usecase-9) node[midway, below] {<<include>>};
+            % \umlinclude{usecase-5}{usecase-8}
+            
+        \end{umlsystem}
+
+        % INTER SYSTEMS ASSOC
+        \draw [->, dashed] (usecase-7) .. controls +(5.5,4.5) and +(2.5,0.5) .. (usecase-2) node[midway, below] {<<extends>>};
+        \draw [->, dashed] (usecase-8) .. controls +(-2.1,1.8) and +(-1.9,0.3) .. (usecase-3) node[midway, below] {<<extends>>};
+        
+    \end{scope}
+
+    % ACTORS
+    \umlactor[x=-9, y=-1, scale=2]{Personne}
+    
+    % ASSOCIATIONS
+    \umlassoc{Personne}{usecase-4}
+    \umlassoc{Personne}{usecase-1}
+
+    % BOUDNING BOX
+    \draw ([shift={(-0.5,-0.5)}] boundingbox.south west) rectangle ([shift={(0.5,0.5)}] boundingbox.north east);
+    \node[above] at (boundingbox.north) {Système Contrôle d'Accès: Partie 1};
+\end{tikzpicture}
+\caption{Système Contrôle d'Accès: Partie 1}
+\label{fig:syspart1}
+\end{figure}
